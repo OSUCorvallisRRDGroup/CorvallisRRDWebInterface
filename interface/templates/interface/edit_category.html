@@ -1,0 +1,19 @@
+{% extends "interface/base.html" %}
+{% block content %}
+    <div class="flex flex-center p2">
+    <form class="md-col-4 mx-auto" method="post">
+        <fieldset class="fieldset-reset">
+            <legend class="h2 bold">Edit Category</legend>
+            <label>Name</label>
+            <input value="{{ category.name }}" name="name" class="field-light block full-width mb1" type="text" id="name" placeholder="What is the category's name?">
+
+            <div class="right mt2">
+                <a href="{% url "categories" %}" class="button bg-orange">Cancel</a>
+                <button type="submit" class="button ml2">Update</button>
+            </div>
+        </fieldset>
+        {% csrf_token %}
+    </form>
+
+</div>
+{% endblock %}

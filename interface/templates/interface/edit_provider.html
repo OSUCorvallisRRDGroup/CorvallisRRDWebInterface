@@ -1,0 +1,28 @@
+{% extends "interface/base.html" %}
+{% block content %}
+
+<div class="flex flex-center p2">
+    <form class="md-col-4 mx-auto" method="post">
+        <fieldset class="fieldset-reset">
+            <legend class="h2 bold">Edit Provider</legend>
+            <label>Name</label>
+            <input value="{{ provider.name }}" name="name" class="field-light block full-width mb1" type="text" id="name" placeholder="What is the provider's name?">
+            <label>Website</label>
+            <input value="{{ provider.website }}" name="website" class="field-light block full-width mb1" type="text" id="website" placeholder="http://somewebsite.com">
+            <label>Phone Number</label>
+            <input value="{{ provider.phone_number }}" name="phone_number" class="field-light block full-width mb1" type="text" id="phone" placeholder="(123)456-7890">
+            <label>Address</label>
+            <textarea name="address" class="field-light block full-width mb1" placeholder="1234 Some Street&#10Corvallis, OR 12345">{{ provider.address }}</textarea>
+            <label>Hours of Operation</label>
+            <textarea name="hours_of_operation" class="field-light block full-width mb1" placeholder="Mon-Fri 8AM to 6PM&#10Sat 10AM to 2PM">{{ provider.hours_of_operation }}</textarea>
+
+            <div class="right mt2">
+                <a href="{%  url "providers" %}" class="button bg-orange">Cancel</a>
+                <button type="submit" class="button ml2">Update</button>
+            </div>
+        </fieldset>
+        {% csrf_token %}
+    </form>
+
+</div>
+{% endblock %}

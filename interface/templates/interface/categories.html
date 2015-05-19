@@ -1,0 +1,60 @@
+{% extends "interface/base.html" %}
+{% block content %}
+<div class="flex flex-center p2">
+    <div class="md-col-10 mx-auto">
+
+        <h1 class="h1 mt1">Service Categories</h1>
+        <form class="right mb2" name="form_controls" method="get">
+            <label for="num-per-page" class="ml2 mr1">View Per Page:</label>
+            <select id="num-per-page" class="inline-block field-light">
+                <option value="5" selected>5</option>
+                <option value="20">20</option>
+                <option value="all">All</option>
+            </select>
+            <label for="filter" class="ml2 mr1">Filter:</label>
+            <input class="field-light inline-block" type="search" name="filter" id="filter">
+        </form>
+        <a href="{%  url "new_category" %}">Add Category</a>
+            <table class="table-light bg-white border rounded">
+        <thead class="bg-darken-1">
+            <tr>
+                <th>Category</th>
+                <th># Items</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+            <tr>
+                <td style="padding-top: 0.7em">{{ category.name }}</td>
+                <td style="padding-top: 0.7em">0</td>
+                <td class="flex center">
+                    <a href="{% url "category" category.id %}" class="button button-transparent button-narrow blue"><span class="icon-eye"></span></a>
+                    <a href="{% url "edit_category" category.id %}" class="button button-transparent button-narrow green"><span class="icon-pencil"></span></a>
+                    <a href="{% url "delete_category" category.id %}" class="button button-transparent button-narrow red"><span class="icon-trash"></span></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    </div>
+
+</div>
+<div class="center">
+  <div class="inline-block overflow-hidden border rounded">
+    <a href="#!" class="left button button-transparent border-right">
+      <span class="icon-chevron-left"></span>
+      &nbsp;Previous
+    </a>
+    <a href="#!" class="right button button-transparent ">
+      Next&nbsp;
+      <span class="icon-chevron-right"></span>
+    </a>
+    <div class="overflow-hidden sm-show">
+      <a href="#!" class="left button button-transparent border-right">1</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Corvallis RRD</title>
+    <link href="{% static 'bass.css' %}" rel="stylesheet">
+    <link href="{%  static "style.css" %}" rel="stylesheet">
+</head>
+<body>
+<div class="clearfix mb2 white bg-green">
+    <div class="left">
+        <a href="{% url 'categories' %}" class="button py2 m0 button-transparent">Categories</a>
+        <a href="{% url 'items' %}" class="button button-narrow py2 m0 button-transparent">Items</a>
+        <a href="{% url 'providers' %}" class="button button-narrow py2 m0 button-transparent">Providers</a>
+        <a href="{% url 'links' %}" class="button button-narrow py2 m0 button-transparent">Republic Links</a>
+        <a href="#!" class="button button-narrow py2 m0 button-transparent">Settings</a>
+    </div>
+    <div class="right">
+        <a href="{% url 'sign_out' %}" class="button py2 m0 button-transparent">Sign Out</a>
+    </div>
+    <div class="clearfix sm-hide"></div>
+</div>
+{% block content %}{% endblock %}
+</body>
+</html>

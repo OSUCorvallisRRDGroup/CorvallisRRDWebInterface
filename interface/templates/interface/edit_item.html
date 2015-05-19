@@ -1,0 +1,18 @@
+{% extends "interface/base.html" %}
+{% block content %}
+    <div class="flex flex-center p2">
+    <form class="md-col-4 mx-auto" method="post">
+        <fieldset class="fieldset-reset">
+            <legend class="h2 bold">Edit Item</legend>
+            <label>Name</label>
+            <input value="{{ item.name }}" name="name" class="field-light block full-width mb1" type="text" id="name" placeholder="What is the item's name?">
+            <div class="right mt2">
+                <a href="{% url "items" %}" class="button bg-orange">Cancel</a>
+                <button type="submit" class="button ml2">Update</button>
+            </div>
+        </fieldset>
+        {% csrf_token %}
+    </form>
+
+</div>
+{% endblock %}

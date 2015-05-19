@@ -1,0 +1,18 @@
+{% extends "interface/base.html" %}
+{% block content %}
+    <div class="flex flex-center p2">
+    <form class="md-col-4 mx-auto" method="post">
+        <fieldset class="fieldset-reset">
+            <legend class="h2 bold">Sign In</legend>
+            <label>Password</label>
+            <input class="field-light block full-width mb1" type="password" id="password" placeholder="Enter the password">
+
+            <div class="right mt2">
+                <button class="button bg-orange">Cancel</button>
+                <button type="submit" class="button ml2">Sign In</button>
+            </div>
+        </fieldset>
+        {% csrf_token %}
+    </form>
+</div>
+{% endblock %}

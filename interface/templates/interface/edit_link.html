@@ -1,0 +1,17 @@
+{% extends "interface/base.html" %}
+{% block content %}
+    <div class="flex flex-center p2">
+    <form class="md-col-4 mx-auto">
+        <fieldset class="fieldset-reset">
+            <legend class="h2 bold">Edit Link</legend>
+            <label>URL</label>
+            <input class="field-light block full-width mb1" type="text" id="url" placeholder="What should the link's url be?">
+
+            <div class="right mt2">
+                <button class="button bg-orange">Cancel</button>
+                <button type="submit" class="button ml2">Create</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}
