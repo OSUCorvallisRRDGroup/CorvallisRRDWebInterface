@@ -1,6 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+class Settings(models.Model):
+    settings = ['username', 'password']
+    key = models.CharField(max_length=20)
+    value = models.CharField(max_length=200)
 
 
 class ServiceProvider(models.Model):
@@ -38,14 +42,30 @@ class Item(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     deleted = models.DateTimeField(null=True, default=None)
-    providers = models.ManyToManyField("ServiceProvider", related_name="items")
-    categories = models.ManyToManyField("ServiceCategory", related_name="items")
+    providers = models.ManyToManyField("ServiceProvider", related_name="items", through='ServiceProviderItem')
+    categories = models.ManyToManyField("ServiceCategory", related_name="items", through='ServiceCategoryItem')
 
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ("name",)
+
+
+class ServiceProviderItem(models.Model):
+    serviceProvider = models.ForeignKey(ServiceProvider)
+    item = models.ForeignKey(Item)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    deleted = models.DateTimeField(null=True, default=None)
+
+
+class ServiceCategoryItem(models.Model):
+    serviceCategory = models.ForeignKey(ServiceCategory)
+    item = models.ForeignKey(Item)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    deleted = models.DateTimeField(null=True, default=None)
 
 
 class Link(models.Model):
